@@ -1,6 +1,6 @@
 {
-  "name": "sst-lerna-yarn-starter",
+  "name": "wedding-app",
   "stage": "dev",
-  "region": "us-east-1",
+  "region": "eu-west-2",
   "lint": true
 }

@@ -1,5 +1,5 @@
 {
-  "name": "sst-lerna-yarn-starter",
+  "name": "wedding-app",
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,21 +8,22 @@
     "frontend",
     "src/packages/*",
     "src/services/*"
-  ],
+  ], 
   "scripts": {
-    "test": "sst test",
-    "start": "sst start",
-    "build": "sst build",
-    "deploy": "sst deploy",
-    "remove": "sst remove"
+    "test": "AWS_PROFILE=personal sst test",
+    "start": "AWS_PROFILE=personal sst start",
+    "build": "AWS_PROFILE=personal sst build",
+    "deploy": "AWS_PROFILE=personal sst deploy --stage prod",
+    "remove": "AWS_PROFILE=personal sst remove",
+    "bootstrap": "AWS_PROFILE=personal cdk bootstrap"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.105.0",
+    "@aws-cdk/assert": "1.138.0",
     "lerna": "^3.22.1"
   },
   "dependencies": {
-    "@serverless-stack/cli": "0.29.2",
-    "@serverless-stack/resources": "0.29.2",
-    "@aws-cdk/core": "1.105.0"
+    "@aws-cdk/core": "1.138.0",
+    "@serverless-stack/cli": "^0.57.2",
+    "@serverless-stack/resources": "^0.57.2"
   }
 }
