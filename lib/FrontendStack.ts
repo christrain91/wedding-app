@@ -12,7 +12,10 @@ export default class WebsiteStack extends Stack {
     }
 
     const site = new NextjsSite(this, 'Site', {
-      customDomain,
+      customDomain: {
+        domainName: customDomain,
+        domainAlias: customDomain ? `www.${customDomain}` : undefined
+      },
       path: 'frontend'
     })
 
