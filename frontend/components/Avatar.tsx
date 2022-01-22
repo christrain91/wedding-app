@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { StaffMember } from 'definitions'
 import { getStaffId } from 'util/staff'
 import Image from 'next/image'
@@ -12,6 +12,10 @@ interface AvatarProps {
 const Avatar = (props: AvatarProps) => {
   const staffId = getStaffId(props.staffMember)
   const [src, setSrc] = useState(`/staff/${staffId}.jpg`)
+
+  useEffect(() => {
+    setSrc(`/staff/${staffId}.jpg`)
+  }, [staffId])
   // const [src, setSrc] = useState('/NoAvatar.jpg')
   const fullName = `${props.staffMember.firstname} ${props.staffMember.surname}`
 

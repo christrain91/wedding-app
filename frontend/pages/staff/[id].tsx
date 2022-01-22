@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import staffMembers from 'data/staff'
 import { getStaffId } from 'util/staff'
 import Avatar from 'components/Avatar'
+import Color from 'color'
+import OtherStaff from '../../components/OtherStaff';
 
 const StaffPage: NextPage = () => {
   const router = useRouter()
@@ -11,21 +13,30 @@ const StaffPage: NextPage = () => {
 
   const staffMember = staffMembers.find((staff) => getStaffId(staff) === staffId)
 
+  const background = staffMember?.job.department.background
+
+  const color = Color(background)
+  const invert = color.isDark()
+
   useEffect(() => {
-    // TODO: Redirect to a 404
-    if (!staffMember) {
-      router.back()
+    const htmlTag = document.querySelector('html')
+    if (htmlTag && background) {
+      htmlTag.style.backgroundColor = background;
     }
-  }, [staffMember, router])
+  }, [background])
 
   if (!staffMember) return null
-
-  return <div className="flex flex-col gap-4 justify-center">
+  return <div className="flex flex-col gap-4 align-middle p-3" style={{ backgroundColor: staffMember.job.department.background }}>
     <div className='flex justify-center w-full'>
       <Avatar className='rounded-full' staffMember={staffMember} size={500} />
     </div>
-    <pre className="m-6 p-6 bg-slate-200 rounded-xl overflow-auto">{JSON.stringify(staffMember, null, 2)}</pre>
-  </div>
+    <article className={`${invert ? 'prose-invert' : ''} prose prose-xl self-center w-full md:w-3xl lg:w-4xl`}>
+      <h1 className='text-center w-full'>{staffMember.firstname} {staffMember.surname}</h1>
+      <h4>{staffMember.job.title}</h4>
+      <p>{staffMember.job.description}</p>
+      <OtherStaff currentStaffMember={staffMember} />
+    </article>
+  </div >
 }
 
 export default StaffPage
