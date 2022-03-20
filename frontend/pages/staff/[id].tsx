@@ -26,16 +26,18 @@ const StaffPage: NextPage = () => {
   }, [background])
 
   if (!staffMember) return null
-  return <div className="flex flex-col gap-4 align-middle p-3" style={{ backgroundColor: staffMember.job.department.background }}>
-    <div className='flex justify-center w-full'>
-      <Avatar className='rounded-full' staffMember={staffMember} size={500} />
+  return <div className="flex flex-col align-middle p-3 overflow-hidden h-screen" style={{ backgroundColor: staffMember.job.department.background }}>
+    <div className='flex justify-center w-full mb-3'>
+      <Avatar className='rounded-full' staffMember={staffMember} size={200} />
     </div>
-    <article className={`${invert ? 'prose-invert' : ''} prose prose-xl self-center w-full md:w-3xl lg:w-4xl`}>
+    <article className={`${invert ? 'prose-invert' : ''} flex-1 prose prose-lg self-center w-full md:w-3xl lg:w-4xl`}>
       <h1 className='text-center w-full'>{staffMember.firstname} {staffMember.surname}</h1>
       <h4>{staffMember.job.title}</h4>
       <p>{staffMember.job.description}</p>
-      <OtherStaff currentStaffMember={staffMember} />
     </article>
+    <div className='flex-end '>
+      <OtherStaff currentStaffMember={staffMember} />
+    </div>
   </div >
 }
 

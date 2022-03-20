@@ -6,6 +6,7 @@ import Avatar from './Avatar'
 import Link from 'next/link';
 
 interface OtherStaffProps {
+  className?: string
   currentStaffMember: StaffMember
 }
 
@@ -13,8 +14,11 @@ const OtherStaff = (props: OtherStaffProps) => {
   const currentId = getStaffId(props.currentStaffMember)
   const staffToShow = take(shuffle(staff.filter(staffIteratee => getStaffId(staffIteratee) !== currentId)), 5)
 
-  return <div className="grid grid-rows-1 grid-cols-5">
-    {staffToShow.map((staffMember) => <SmallStaffMember key={getStaffId(staffMember)} staffMember={staffMember} />)}
+  return <div className="bg-slate-400/50 not-prose p-3 rounded-2xl">
+    <div className='text-center'>Other Staff</div>
+    <div className="flex place-content-between mt-3">
+      {staffToShow.map((staffMember) => <SmallStaffMember key={getStaffId(staffMember)} staffMember={staffMember} />)}
+    </div>
   </div>
 }
 
@@ -26,7 +30,7 @@ const SmallStaffMember = (props: SmallStaffMemberProps) => {
   const id = getStaffId(props.staffMember)
   return <Link href={`/staff/${id}`} passHref>
     <div>
-      <Avatar className="rounded-full" staffMember={props.staffMember} size={100} />
+      <Avatar className="rounded-full cursor-pointer" staffMember={props.staffMember} size={80} />
     </div>
   </Link>
 }

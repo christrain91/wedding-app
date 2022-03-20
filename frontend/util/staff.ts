@@ -12,3 +12,7 @@ export function getStaffMemberFromId(id: string) {
 export function getStaffId(staffMember: StaffMember) {
   return `${staffMember.firstname}_${staffMember.surname}`.toLowerCase()
 }
+
+export function getStaffByUUID(uuid: string): StaffMember | undefined {
+  return staff.find((staffMember) => staffMember.uuid === uuid)
+}

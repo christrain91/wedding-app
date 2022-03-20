@@ -3,6 +3,7 @@ import staffMembers from 'data/staff'
 import StaffCard from './StaffCard'
 import { getStaffId } from 'util/staff'
 import { sortBy } from 'lodash'
+import Color from 'color'
 
 interface DepartmentProps {
   department: Department
@@ -12,15 +13,21 @@ const Department = (props: DepartmentProps) => {
   const { department } = props
   const departmentStaff = sortBy(staffMembers.filter(staffMember => staffMember.job.department.id === department.id), 'displayOrder')
 
-  return <div className="mb-5 w-full p-6 rounded-xl shadow" style={{
-    backgroundColor: department.background,
-    color: department.fontColour || 'white'
-  }}>
-    <h1 className="bold text-4xl mb-8 p-3 text-center rounded-xl" >{department.title}</h1>
-    <div className='flex flex-wrap gap-6 align-middle justify-center'>
-      {departmentStaff.map(staffMember => <StaffCard key={getStaffId(staffMember)} staffMember={staffMember} />)}
+  const background = department.background
+
+  const color = Color(background)
+  const invert = color.isDark()
+
+  return <div className={`pt-10 pb-10`} style={{ background: department.background }}>
+    <div className='flex flex-col align-middle justify-center mb-15'>
+      <div className={`prose self-center ${invert ? 'prose-invert' : ''}`}>
+        <h1 className="bold pb-10" >{department.title}</h1>
+      </div>
     </div>
-  </div>
+    <div className='flex flex-wrap gap-12 align-middle justify-center'>
+      {departmentStaff.map(staffMember => <StaffCard invert={invert} key={getStaffId(staffMember)} staffMember={staffMember} />)}
+    </div>
+  </div >
 }
 
 export default Department

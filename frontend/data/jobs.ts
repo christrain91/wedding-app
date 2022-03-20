@@ -14,7 +14,7 @@ import {
 export const OWNER: Job = {
   title: 'Owner',
   department: OWNERS,
-  description: 'Yessss',
+  description: 'No expense has been spared.',
   displayOrder: 1
 }
 

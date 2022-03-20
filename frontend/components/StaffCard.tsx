@@ -5,18 +5,19 @@ import Link from 'next/link'
 
 interface StaffCardProps {
   staffMember: StaffMember
+  invert: boolean
 }
 
 const StaffCard = (props: StaffCardProps) => {
   const staffId = getStaffId(props.staffMember)
 
   return <Link href={`/staff/${staffId}`} passHref>
-    <div className={`p-3 w-[500px] cursor-pointer shadow-md transition-all bg-slate-100/50 hover:bg-slate-100/75 hover:scale-105 rounded-xl`}>
+    <div className={`w-[250px] cursor-pointer transition-all hover:scale-105 mb-4`}>
       <div className='flex justify-center'>
-        <Avatar className="rounded-full" staffMember={props.staffMember} size={400} />
+        <Avatar className="rounded-full" staffMember={props.staffMember} size={200} />
       </div>
-      <div className="font-xl text-center p-3" >
-        <div className="font-bold text-cyan-600">
+      <div className={`text-center prose ${props.invert ? 'prose-invert' : ''} prose-2xl`}>
+        <div className="font-bold">
           {props.staffMember.firstname} {props.staffMember.surname}
         </div>
         <div className='light'>
