@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import useCurrentStaffMember from '../../hooks/useCurrentStaffMember'
+import useCurrentStaffMember from 'hooks/useCurrentStaffMember'
 import Avatar from 'components/Avatar'
 import Button from 'react-bootstrap/Button'
 
 
 const Login = () => {
   const router = useRouter()
-  const { setCurrentStaffMemberUUID, getCurrentStaffMember, loading, currentStaffMember } = useCurrentStaffMember()
+  const { setCurrentStaffMemberUUID, getCurrentStaffMember, currentStaffMember } = useCurrentStaffMember()
   const { uuid } = router.query
 
   useEffect(() => {

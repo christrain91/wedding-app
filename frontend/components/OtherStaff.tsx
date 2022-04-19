@@ -14,9 +14,9 @@ const OtherStaff = (props: OtherStaffProps) => {
   const currentId = getStaffId(props.currentStaffMember)
   const staffToShow = take(shuffle(staff.filter(staffIteratee => getStaffId(staffIteratee) !== currentId)), 5)
 
-  return <div className="bg-slate-400/50 not-prose p-3 rounded-2xl">
-    <div className='text-center'>Other Staff</div>
-    <div className="flex place-content-between mt-3">
+  return <div className="bg-slate-400/50 not-prose p-3 w-full rounded-2xl">
+    <div className='text-center mb-3'>Other Staff</div>
+    <div className="flex place-content-between gap-x-3">
       {staffToShow.map((staffMember) => <SmallStaffMember key={getStaffId(staffMember)} staffMember={staffMember} />)}
     </div>
   </div>

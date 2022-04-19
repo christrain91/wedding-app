@@ -7,6 +7,7 @@ import Color from 'color'
 
 interface DepartmentProps {
   department: Department
+  className?: string
 }
 
 const Department = (props: DepartmentProps) => {
@@ -18,7 +19,7 @@ const Department = (props: DepartmentProps) => {
   const color = Color(background)
   const invert = color.isDark()
 
-  return <div className={`pt-10 pb-10`} style={{ background: department.background }}>
+  return <div className={`pt-10 pb-10 ${props.className}`} style={{ background: department.background }}>
     <div className='flex flex-col align-middle justify-center mb-15'>
       <div className={`prose self-center ${invert ? 'prose-invert' : ''}`}>
         <h1 className="bold pb-10" >{department.title}</h1>
