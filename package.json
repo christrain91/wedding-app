@@ -13,7 +13,7 @@
     "test": "AWS_PROFILE=personal sst test",
     "start": "AWS_PROFILE=personal sst start",
     "build": "AWS_PROFILE=personal sst build",
-    "deploy": "AWS_PROFILE=personal sst deploy --stage prod",
+    "deploy": "AWS_PROFILE=personal sst deploy --stagecd prod",
     "remove": "AWS_PROFILE=personal sst remove",
     "bootstrap": "AWS_PROFILE=personal cdk bootstrap"
   },

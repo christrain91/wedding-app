@@ -30,12 +30,15 @@ const Login = () => {
     </Head>
     {(currentStaffMember) ?
       <div className="bg-[url('/dino.jpeg')] bg-no-repeat bg-cover">
-        <div className="flex flex-col align-middle h-screen justify-center items-center bg-white/10 backdrop-blur-md">
-          <Avatar staffMember={currentStaffMember} size={450} className="rounded-full m-3" />
-          <p className='text-xl font-light text-white'>
-            Welcome, you have logged in as {currentStaffMember.firstname} {currentStaffMember.surname}
+        <div className="flex flex-col p-3 align-middle h-screen justify-center items-center bg-white/10 backdrop-blur-md">
+          <Avatar staffMember={currentStaffMember} size={400} className="rounded-full m-3" />
+          <p className='text-2xl font-bold mb-2 text-center text-white'>
+            Welcome... to Jurassic Park
           </p>
-          <Button className="m-3 bg-blue-600" size="lg" variant="primary" onClick={onContinueClick}>Continue</Button>
+          <p className="text-lg font-light text-center text-white">
+            You have logged in as {currentStaffMember.firstname} {currentStaffMember.surname}
+          </p>
+          <Button className="m-3 bg-yellow-500 active:bg-yellow-400 hover:bg-yellow-400 border-none text-gray-100 font-bold capitalize" size="lg" variant="primary" onClick={onContinueClick}>CONTINUE</Button>
         </div>
       </div>
       : null}

@@ -19,10 +19,10 @@ const Department = (props: DepartmentProps) => {
   const color = Color(background)
   const invert = color.isDark()
 
-  return <div className={`pt-10 pb-10 ${props.className}`} style={{ background: department.background }}>
+  return <div className={`pb-10 ${props.className}`} style={{ background: department.background }}>
     <div className='flex flex-col align-middle justify-center mb-15'>
       <div className={`prose self-center ${invert ? 'prose-invert' : ''}`}>
-        <h1 className="bold pb-10" >{department.title}</h1>
+        <h1 className="pb-10" >{department.title}</h1>
       </div>
     </div>
     <div className='flex flex-wrap gap-12 align-middle justify-center'>

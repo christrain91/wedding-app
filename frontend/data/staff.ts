@@ -23,7 +23,6 @@ import {
   MARKSMAN,
   DIRECTOR_OF_LOGISTICS,
   ANIMAL_SPECIALIST,
-  SYSTEMS_SECURITY_ADMIN,
   HEAD_OF_SECURITY,
   DIRECTOR_OF_SECURITY,
   DIRECTOR_OF_FINANCE,
@@ -31,7 +30,6 @@ import {
   DIRECTOR_OF_ENGINEERING,
   DIRECTOR_OF_PUBLIC_RELATIONS,
   HEAD_OF_ACCOMODATION,
-  PILOT,
   SYSTEMS_DATABASE_ENGINEER,
   RC_TECHNICIAN,
   DIRECTOR_OF_OPERATIONS,
@@ -99,12 +97,6 @@ const staff: StaffMember[] = [
     surname: 'Chadwick',
     job: ZOO_KEEPER,
     customAvatarUrl: '/staff/jon_chadwick.gif'
-  },
-  {
-    uuid: '8395401b-e204-4710-9521-48fa55033449',
-    firstname: 'Pauline',
-    surname: 'Chadwick',
-    job: ETHOLOGIST
   },
   {
     uuid: 'feca5e40-0de8-427c-ac4c-76682bfe77e3',
@@ -299,13 +291,6 @@ const staff: StaffMember[] = [
     firstname: 'Sue',
     surname: 'Jones',
     job: TOUR_GUIDE
-  },
-  {
-    uuid: 'e65194d8-3a84-48a0-83b9-8d88432b8a8a',
-    firstname: 'Thomas',
-    nicknames: ['Tom', 'Willy', 'Willie', 'William'],
-    surname: 'Kilgallon',
-    job: HEAD_SOFTWARE_DEVELOPMENT
   },
   {
     uuid: '35d13c10-c584-4491-86d9-35ac5c110a64',
