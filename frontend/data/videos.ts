@@ -9,7 +9,9 @@ const urls = [
   'JylK4HuKMvQ',
   'YPoQ2pk7av4',
   'T4kBRC2co7Y',
-  'r37hdKcTTGM'
+  'r37hdKcTTGM',
+  'WgQe68kF_8M',
+  'e6FXdloCUOM'
 ]
 
 export default urls

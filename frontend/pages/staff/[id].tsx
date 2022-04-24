@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
 import { GetStaticProps, NextPage } from 'next'
-import { useRouter } from 'next/router'
 import staffMembers from 'data/staff'
 import { getStaffId } from 'util/staff'
 import Avatar from 'components/Avatar'
 import Color from 'color'
-import OtherStaff from '../../components/OtherStaff'
+import OtherStaff from 'components/OtherStaff'
 import { StaffMember } from 'definitions'
-import RandomVideo from '../../components/RandomVideo';
-import useWindowWidth from 'react-hook-use-window-width';
+import RandomVideo from 'components/RandomVideo'
 
 const StaffPage: NextPage<{ staffMember: StaffMember }> = (props) => {
   const { staffMember } = props
