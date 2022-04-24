@@ -96,7 +96,7 @@ const staff: StaffMember[] = [
     firstname: 'Jon',
     surname: 'Chadwick',
     job: ZOO_KEEPER,
-    customAvatarUrl: '/staff/jon_chadwick.gif'
+    customAvatarUrl: '/staff/jon_forever_dance.gif'
   },
   {
     uuid: 'feca5e40-0de8-427c-ac4c-76682bfe77e3',
@@ -190,12 +190,6 @@ const staff: StaffMember[] = [
     job: PALEONTOLOGIST
   },
   {
-    uuid: '477061d4-b91a-4ed0-b622-165d274ab3ca',
-    firstname: 'Megan',
-    surname: 'Goodwin',
-    job: ETHOLOGIST
-  },
-  {
     uuid: '16d30ed4-e27d-4864-be41-ca22ed6c437e',
     firstname: 'Josie',
     surname: 'Gotch',
@@ -233,16 +227,16 @@ const staff: StaffMember[] = [
     job: BIOCHEMIST
   },
   {
-    uuid: 'c61b98c3-ead6-40e2-b0b6-3a378db8aab7',
-    firstname: 'Luke',
-    surname: 'Harris',
-    job: PALEONTOLOGIST
-  },
-  {
     uuid: '0e25ebae-0773-4779-864d-3d87cc734efc',
     firstname: 'Paul',
     surname: 'Harris',
     job: MECHANIC
+  },
+  {
+    uuid: '91291af8-b9f3-4549-8421-a5da1ee15439',
+    firstname: 'Hilary',
+    surname: 'Hargreaves',
+    job: ZOO_KEEPER
   },
   {
     uuid: '5abfbf5d-6cd4-4110-9569-00b169caf36b',

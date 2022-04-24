@@ -1,23 +1,25 @@
 import { useState, useEffect } from 'react'
 import { StaffMember } from 'definitions'
 import { getStaffId } from 'util/staff'
-import Image from 'next/image'
 
 interface AvatarProps {
   staffMember: StaffMember
   size: number
   className: string
+  onClick?: () => void
 }
 
 const Avatar = (props: AvatarProps) => {
-  const staffId = getStaffId(props.staffMember)
+  const { staffMember } = props
+  const staffId = getStaffId(staffMember)
   const [src, setSrc] = useState(`/staff/${staffId}.jpg`)
 
   useEffect(() => {
-    setSrc(`/staff/${staffId}.jpg`)
-  }, [staffId])
-  // const [src, setSrc] = useState('/NoAvatar.jpg')
-  const fullName = `${props.staffMember.firstname} ${props.staffMember.surname}`
+    const src = staffMember.customAvatarUrl || `/staff/${staffId}.jpg`
+    setSrc(src)
+  }, [staffMember, staffId])
+
+  const fullName = `${staffMember.firstname} ${staffMember.surname}`
 
   // eslint-disable-next-line @next/next/no-img-element
   return <img
@@ -27,7 +29,8 @@ const Avatar = (props: AvatarProps) => {
     alt={fullName}
     width={props.size}
     height={props.size}
-    onError={() => setSrc('/NoAvatar.jpg')}
+    onError={(_err) => setSrc('/NoAvatar.jpg')}
+    onClick={props.onClick}
   />
 }
 

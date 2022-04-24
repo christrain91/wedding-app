@@ -22,7 +22,7 @@ export const OWNER: Job = {
 export const DIRECTOR_OF_SECURITY: Job = {
   title: 'Director of Security',
   department: DIRECTOR,
-  description: 'I Make things secure, or at least give it a go',
+  description: 'I make things secure, or at least give it a go',
   displayOrder: 1
 }
 export const DIRECTOR_OF_FINANCE: Job = {
