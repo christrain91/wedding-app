@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
-  const hideNavigationOn = ['/404', '/login']
+  const hideNavigationOn = ['/404', '/login', '/unauthorised']
 
   const showNavigation = !hideNavigationOn.find(route => router.route.startsWith(route))
 

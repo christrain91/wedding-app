@@ -1,4 +1,5 @@
 import { StaffMember } from '../definitions'
+import { SYSTEMS_SECURITY_ADMIN } from './jobs'
 import {
   OWNER,
   VET_SUR,
@@ -530,6 +531,12 @@ const staff: StaffMember[] = [
     surname: 'Savin',
     nicknames: ['Connor', 'McGregor'],
     job: RC_TECHNICIAN
+  },
+  {
+    uuid: 'a0553211-5e5f-4731-80bc-00488977b688',
+    firstname: 'Mike',
+    surname: 'Rodgers',
+    job: SYSTEMS_SECURITY_ADMIN
   }
 ]
 
