@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import useCurrentStaffMember from 'hooks/useCurrentStaffMember'
 import Avatar from 'components/Avatar'
-import Button from 'react-bootstrap/Button'
+import Button from 'components/Button'
 
 
 const Login = () => {
@@ -38,7 +38,7 @@ const Login = () => {
           <p className="text-lg font-light text-center text-white">
             You have logged in as {currentStaffMember.firstname} {currentStaffMember.surname}
           </p>
-          <Button className="m-3 bg-yellow-500 active:bg-yellow-400 hover:bg-yellow-400 border-none text-gray-100 font-bold capitalize" size="lg" variant="primary" onClick={onContinueClick}>CONTINUE</Button>
+          <Button size="lg" onClick={onContinueClick}>CONTINUE</Button>
         </div>
       </div>
       : null}
