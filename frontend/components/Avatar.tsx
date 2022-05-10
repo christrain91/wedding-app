@@ -29,6 +29,10 @@ const Avatar = (props: AvatarProps) => {
     alt={fullName}
     width={props.size}
     height={props.size}
+    style={{
+      width: props.size,
+      height: props.size
+    }}
     onError={(_err) => setSrc('/NoAvatar.jpg')}
     onClick={props.onClick}
   />

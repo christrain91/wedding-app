@@ -22,7 +22,7 @@ const Navigation = () => {
     router.push('/staff/[id]', `/staff/${getStaffId(staffMember)}`)
   }
 
-  return <div className="fixed bottom-16 h-[80px] w-full pl-1 pr-1 pb-8 flex flex-row justify-center ">
+  return <div className="fixed bottom-16 h-[80px] w-full pl-1 pr-1 pb-8 flex flex-row justify-center z-50">
     <div className="flex flex-row justify-between bg-white/90 shadow-xl rounded-xl rounded-b-none relative bottom-[-18px] h-32 w-full max-w-[600px] p-3 gap-x-2">
       <NavItem label="Staff List" href="/" icon="staff" />
       <div className="flex flex-col content-center relative top-[-30px] justify-self-center place-content-center align-middle items-center">

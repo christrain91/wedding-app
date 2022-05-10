@@ -14,7 +14,7 @@
     "start": "AWS_PROFILE=personal sst start",
     "build": "AWS_PROFILE=personal sst build",
     "deploy": "AWS_PROFILE=personal sst deploy --stage prod",
-    "remove": "AWS_PROFILE=personal sst remove",
+    "remove": "AWS_PROFILE=personal sst remove --stage prod",
     "bootstrap": "AWS_PROFILE=personal cdk bootstrap"
   },
   "devDependencies": {
@@ -24,6 +24,8 @@
   "dependencies": {
     "@aws-cdk/core": "1.138.0",
     "@serverless-stack/cli": "^0.57.2",
-    "@serverless-stack/resources": "^0.57.2"
+    "@serverless-stack/resources": "^0.57.2",
+    "@supabase/supabase-js": "^1.35.2",
+    "aws-lambda": "^1.0.7"
   }
 }

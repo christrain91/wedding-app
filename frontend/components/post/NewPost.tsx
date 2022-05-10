@@ -1,49 +1,43 @@
-import { useState } from 'react'
 import { Post } from 'hooks/usePosts'
 import useCurrentStaffMember from 'hooks/useCurrentStaffMember'
-import Button from 'components/Button'
+import makeRequest from 'util/makeRequest'
+import PostInput, { PostInputValue } from './PostInput'
+import supabase from 'util/supabase'
+import { v4 as uuidv4 } from 'uuid'
+import { compact } from 'lodash'
 
 interface NewPostProps {
   onNewPost: (post: Post) => void
 }
 
 const NewPost = (props: NewPostProps) => {
-  const [text, setText] = useState('')
-  const [loading, setLoading] = useState(false)
   const { currentStaffMember } = useCurrentStaffMember()
 
-  const createPost = async () => {
-    if (!currentStaffMember || !text) return
+  const createPost = async (value: PostInputValue) => {
+    if (!currentStaffMember) return
 
-    setLoading(true)
+    const fileIds = await Promise.all(value.files.map(async (file) => {
+      const uuid = uuidv4()
+      console.log('uploading file', file, uuid)
+      const filename = `${uuid}_${file.name}`
+      const { error } = await supabase.storage.from('post-image').upload(filename, file)
+      if (error) {
+        console.error(error)
+        throw error
+      }
+      return filename
+    }))
 
-    const content = text
-    setText('')
+    const post = await makeRequest<Post>('/post/create', {
+      content: value.comment,
+      uuid: currentStaffMember.uuid,
+      fileIds: compact(fileIds)
+    })
 
-    const response = await fetch('/api/post/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        content,
-        uuid: currentStaffMember.uuid
-      })
-    }).finally(() => setLoading(false))
-
-    const post: Post = await response.json()
     props.onNewPost(post)
   }
 
-  return <form className="p-6">
-    <textarea
-      className="w-full p-6 h-40 mb-0 rounded-xl resize-none"
-      placeholder="Write a new post..."
-      value={text}
-      onChange={(e) => setText(e.target.value)}
-    />
-    <Button type="submit" disabled={loading || !text} onClick={createPost}>{!loading ? 'Create Post' : '....'}</Button>
-  </form>
+  return <PostInput onSubmit={createPost}  />
 }
 
 export default NewPost
