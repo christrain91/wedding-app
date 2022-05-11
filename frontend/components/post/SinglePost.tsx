@@ -2,11 +2,13 @@ import { Post } from 'hooks/usePosts'
 import { getStaffMemberFromId } from 'util/staff'
 import Avatar from 'components/Avatar'
 import formatDistance from 'date-fns/formatDistance'
-import { Transition } from '@headlessui/react'
 import supabase from 'util/supabase'
 import { useMemo } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper'
+import { ScaleFade } from '@chakra-ui/transition'
+import FadeInImage from 'components/FadeInImage'
+import { compact } from 'lodash'
 
 const SinglePost = (props: Post) => {
   const { content, created_at, created_by, file_ids } = props
@@ -26,7 +28,7 @@ const SinglePost = (props: Post) => {
   const distance = formatDistance(createdAt, new Date(), { addSuffix: true })
 
   // eslint-disable-next-line @next/next/no-img-element
-  const images = fileUrls.map(fileUrl => <img key={fileUrl} alt={fileUrl} src={fileUrl} className="w-full select-none" />)
+  const images = compact(fileUrls).map(fileUrl => <FadeInImage key={fileUrl} alt={fileUrl} src={fileUrl} className="w-full select-none" />)
   let carousel: JSX.Element | JSX.Element[] = images
 
   if (fileUrls.length > 0) {
@@ -37,7 +39,7 @@ const SinglePost = (props: Post) => {
     </Swiper>
   } 
 
-  return <Transition show enter="transition-opacity duration-500"enterFrom="opacity-0" enterTo="opacity-100" >
+  return <ScaleFade in>
     <div className="w-full bg-white p-3 rounded-xl">
       <div className="flex gap-x-2 align-middle items-center pb-2">
         <div>
@@ -57,7 +59,7 @@ const SinglePost = (props: Post) => {
         {carousel}
       </div>
     </div>
-  </Transition>
+  </ScaleFade>
 }
 
 export default SinglePost

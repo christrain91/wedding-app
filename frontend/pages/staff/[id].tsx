@@ -11,7 +11,6 @@ import BackButton from 'components/BackButton'
 
 const StaffPage: NextPage<{ staffMember: StaffMember }> = (props) => {
   const { staffMember } = props
-
   const background = staffMember.job.department.background
 
   const color = Color(background)
@@ -24,21 +23,23 @@ const StaffPage: NextPage<{ staffMember: StaffMember }> = (props) => {
     }
   }, [background])
 
-  return <div className="flex flex-col p-6 justify-center align-middle overflow-x-hidden overflow-y-auto gap-y-2 pb-[160px] pt-3 pl-3 pr-3" style={{ backgroundColor: staffMember.job.department.background }}>
-    <BackButton invert={invert} />
-    <div className='flex justify-center w-full mb-3' >
-      <Avatar className='rounded-full' staffMember={staffMember} size={200} />
+  return (
+    <div className="flex flex-col p-6 justify-center align-middle overflow-x-hidden overflow-y-auto gap-y-2 pb-[170px] pt-3 pl-3 pr-3" style={{ backgroundColor: staffMember.job.department.background }}>
+      <BackButton invert={invert} />
+      <div className='flex justify-center w-full mb-3' >
+        <Avatar className='rounded-full' staffMember={staffMember} size={200} />
+      </div>
+      <article className={`${invert ? 'prose-invert' : ''} flex-1 prose prose-lg self-center w-full md:w-3xl lg:w-4xl`}>
+        <h1 className='text-center w-full'>{staffMember.firstname} {staffMember.surname}</h1>
+        <h4>{staffMember.job.title}</h4>
+        <p>{staffMember.job.description}</p>
+      </article>
+      <RandomVideo className="self-center mt-6 mb-6" />
+      <div className='flex-end self-center'>
+        <OtherStaff currentStaffMember={staffMember} />
+      </div>
     </div>
-    <article className={`${invert ? 'prose-invert' : ''} flex-1 prose prose-lg self-center w-full md:w-3xl lg:w-4xl`}>
-      <h1 className='text-center w-full'>{staffMember.firstname} {staffMember.surname}</h1>
-      <h4>{staffMember.job.title}</h4>
-      <p>{staffMember.job.description}</p>
-    </article>
-    <RandomVideo className="self-center mt-6 mb-6" />
-    <div className='flex-end self-center'>
-      <OtherStaff currentStaffMember={staffMember} />
-    </div>
-  </div >
+  )
 }
 
 export const getStaticPaths = () => {

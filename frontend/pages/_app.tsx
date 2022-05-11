@@ -18,8 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Head>
       <title>Train Wedding</title>
     </Head>
-    <Component {...pageProps} />
-    {showNavigation ? <Navigation /> : null}
+    <main key={router.route}>
+      <Component {...pageProps} key={router.route} />
+      {showNavigation ? <Navigation /> : null}
+    </main>
   </>
 }
 

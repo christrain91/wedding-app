@@ -1,5 +1,5 @@
 import { ChangeEventHandler, useRef } from 'react'
-import CameraIcon from '@heroicons/react/solid/CameraIcon'
+import { FaCamera } from 'react-icons/fa'
 import { values } from 'lodash'
 
 interface AddPhotosButtonProps {
@@ -23,7 +23,7 @@ const AddPhotosButton = (props: AddPhotosButtonProps) => {
      className="-m-2.5 w-10 h-10 rounded-full flex items-center justify-center text-gray-400 hover:text-gray-500"
      onClick={onAddPhotoClick}
     >
-      <CameraIcon className="h-5 w-5" aria-hidden="true" />
+      <FaCamera className="h-5 w-5" aria-hidden="true" />
       <span className="sr-only">Add photos</span>
       <input ref={fileInputRef} className="hidden" onChange={onSelectFile} type="file" multiple accept='image/*' />
     </button>

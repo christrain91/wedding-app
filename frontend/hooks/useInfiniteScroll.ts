@@ -25,7 +25,11 @@ export default function useInfiniteScroll(options: InfiniteScrollOptions) {
 
   // Try to load more if we have empty space or have scrolled to the bottom, if we're already loading, set a flag to load when we're next not loading
   useEffect(() => {
-    const hasEmptySpace = childrenContainerHeight < scrollContainerHeight
+    const hasEmptySpace =
+      (childrenContainerHeight &&
+        scrollContainerHeight &&
+        childrenContainerHeight < scrollContainerHeight) ||
+      false
 
     const hasScrolledToBottom =
       scrollPosition + scrollContainerHeight >

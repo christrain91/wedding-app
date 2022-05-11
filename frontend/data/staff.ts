@@ -319,12 +319,6 @@ const staff: StaffMember[] = [
     job: SECURITY_OFFICER
   },
   {
-    uuid: 'acc11893-2f15-42ad-aef7-7947cc8e625a',
-    firstname: 'Marvin',
-    surname: 'Palmer',
-    job: RAPTOR_WRANGLER
-  },
-  {
     uuid: 'a18ef4b5-343b-4990-afc0-6ac71c9f5676',
     firstname: 'Aiden',
     surname: 'Priest',

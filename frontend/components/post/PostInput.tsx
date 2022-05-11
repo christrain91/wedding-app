@@ -3,6 +3,7 @@ import useCurrentStaffMember from 'hooks/useCurrentStaffMember'
 import Button from 'components/Button'
 import AddPhotosButton from './AddPhotosButton'
 import PhotoPreviewList from './PhotoPreviewList'
+import LoadIcon from 'components/LoadIcon'
 
 export interface PostInputValue {
   comment: string
@@ -20,8 +21,9 @@ const PostInput = (props: PostInputProps) => {
   const [comment, setComment] = useState('')
 
   const handleSubmit: FormEventHandler = async (e) => {
-    setLoading(true)
     e.preventDefault()
+    if (!comment || loading) return
+    setLoading(true)
     try {
       await props.onSubmit({ comment, files })
       setFiles([])
@@ -44,9 +46,10 @@ const PostInput = (props: PostInputProps) => {
   }
 
   return (
+    <>
       <div className="min-w-0 flex-1">
         <form onSubmit={handleSubmit} className="relative">
-          <div className="border border-gray-300 rounded-lg shadow-sm overflow-hidden focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+          <div className="rounded-xl shadow-sm overflow-hiddem">
             <label htmlFor="comment" className="sr-only">
               Add your comment
             </label>
@@ -54,11 +57,11 @@ const PostInput = (props: PostInputProps) => {
               rows={3}
               name="comment"
               id="comment"
-              className="block w-full py-3 border-0 resize-none focus:ring-0 sm:text-sm"
+              className="block w-full py-3 border-0 resize-none focus:ring-0 rounded-t-xl outline-none shadow-none sm:text-sm"
               placeholder="Add your comment..."
               value={comment}
               onChange={onCommentChange}
-            />
+              />
           <div className="bg-white">
             <PhotoPreviewList files={files} />
           </div>
@@ -77,11 +80,13 @@ const PostInput = (props: PostInputProps) => {
               </div>
             </div>
             <div className="flex-shrink-0">
-            <Button disabled={loading} type="submit">Post</Button>
+            <Button disabled={loading || !comment} type="submit">Post</Button>
             </div>
           </div>
         </form>
       </div>
+      {loading && <LoadIcon className="mt-4" />}
+    </>
   )
 }
 

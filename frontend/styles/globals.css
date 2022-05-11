@@ -18,3 +18,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --swiper-pagination-color: rgb(237, 133, 15);
+}

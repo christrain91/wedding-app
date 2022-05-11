@@ -18,7 +18,6 @@ const NewPost = (props: NewPostProps) => {
 
     const fileIds = await Promise.all(value.files.map(async (file) => {
       const uuid = uuidv4()
-      console.log('uploading file', file, uuid)
       const filename = `${uuid}_${file.name}`
       const { error } = await supabase.storage.from('post-image').upload(filename, file)
       if (error) {

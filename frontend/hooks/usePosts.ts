@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import supabase from 'util/supabase'
-import { compact } from 'lodash'
+import { compact, uniq, uniqBy } from 'lodash'
 
 export interface Post {
   id: number
@@ -12,10 +12,7 @@ export interface Post {
 
 const usePosts = () => {
   const [posts, setPosts] = useState<Post[]>([])
-
-  const oldestId = useMemo(() => {
-    return Math.min(...posts.map((post) => post.id)) || null
-  }, [posts])
+  const [loading, setLoading] = useState(false)
 
   const formatPost = (post: Post) => ({
     ...post,
@@ -23,27 +20,33 @@ const usePosts = () => {
   })
 
   const getPosts = useCallback(async (lastId?: number | null) => {
-    let query = supabase.from<Post>('post').select('*')
+    try {
+      setLoading(true)
+      let query = supabase.from<Post>('post').select('*')
+      if (lastId) {
+        query = query.lt('id', lastId)
+      }
 
-    if (lastId) {
-      query = query.lt('id', lastId)
+      const { data: posts, error } = await query
+        .order('created_at', {
+          ascending: false
+        })
+        .limit(5)
+
+      if (error) throw error
+      return (posts || []).map(formatPost)
+    } finally {
+      setLoading(false)
     }
-
-    const { data: posts, error } = await query.order('created_at', {
-      ascending: false
-    })
-
-    if (error) throw error
-    return (posts || []).map(formatPost)
   }, [])
 
   const getMore = () => {
+    const oldestId = getOldestId(posts)
+    if (!oldestId || oldestId <= 1 || loading) return
     getPosts(oldestId).then((posts) =>
-      setPosts((current) => [...current, ...posts])
+      setPosts((current) => addPostsToPosts(current, posts))
     )
   }
-
-  // TODO: Need to handle infite scroll
 
   useEffect(() => {
     getPosts().then((posts: Post[]) => setPosts(posts))
@@ -53,7 +56,16 @@ const usePosts = () => {
     setPosts([formatPost(post), ...posts])
   }
 
-  return { posts, addPost, getMore }
+  return { posts, addPost, getMore, loading }
+}
+
+function addPostsToPosts(posts: Post[], newPosts: Post[]) {
+  return uniqBy([...posts, ...newPosts], 'id')
+}
+
+function getOldestId(posts: Post[]) {
+  if (posts.length === 0) return null
+  return Math.min(...posts.map((post) => post.id))
 }
 
 export default usePosts
