@@ -31,7 +31,7 @@ const Login = () => {
     {(currentStaffMember) ?
       <div className="bg-[url('/dino.jpeg')] bg-no-repeat bg-cover">
         <div className="flex flex-col p-3 align-middle h-screen justify-center items-center bg-white/10 backdrop-blur-md">
-          <Avatar staffMember={currentStaffMember} size={400} className="rounded-full m-3" />
+          <Avatar staffMember={currentStaffMember} size={250} className="rounded-full m-3" />
           <p className='text-2xl font-bold mb-2 text-center text-white'>
             Welcome... to Jurassic Park
           </p>
