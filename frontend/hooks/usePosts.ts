@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import supabase from 'util/supabase'
-import { compact, uniq, uniqBy } from 'lodash'
+import { compact, uniqBy } from 'lodash'
 
 export interface Post {
   id: number
@@ -67,7 +67,7 @@ const usePosts = () => {
   }, [getPosts])
 
   const addPost = (post: Post) => {
-    setPosts([formatPost(post), ...posts])
+    setPosts(addPostsToPosts([formatPost(post)], posts))
   }
 
   return { posts, addPost, getMore, loading }
