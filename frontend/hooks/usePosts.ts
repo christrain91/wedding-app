@@ -19,6 +19,20 @@ const usePosts = () => {
     file_ids: compact(((post.file_ids as unknown as string) || '').split(','))
   })
 
+  useEffect(() => {
+    const subscription = supabase
+      .from('post')
+      .on('INSERT', (payload) => {
+        const newPost = formatPost(payload.new)
+        setPosts(addPostsToPosts([newPost], posts))
+      })
+      .subscribe()
+
+    return () => {
+      supabase.removeSubscription(subscription)
+    }
+  }, [posts])
+
   const getPosts = useCallback(async (lastId?: number | null) => {
     try {
       setLoading(true)

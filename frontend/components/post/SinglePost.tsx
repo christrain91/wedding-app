@@ -54,7 +54,7 @@ const SinglePost = (props: Post) => {
       </div>
       <div className="pose p-1">
         <p className="mb-1">
-        {content}
+        {content.split('\n').map((line, index) => <span key={index}>{line}<br /></span>)}
         </p>
         {carousel}
       </div>

@@ -35,7 +35,7 @@ const Login = () => {
           <p className='text-2xl font-bold mb-2 text-center text-white'>
             Welcome... to Jurassic Park
           </p>
-          <p className="text-lg font-light text-center text-white">
+          <p className="text-lg font-light text-center text-white mb-3">
             You have logged in as {currentStaffMember.firstname} {currentStaffMember.surname}
           </p>
           <Button size="lg" onClick={onContinueClick}>CONTINUE</Button>
