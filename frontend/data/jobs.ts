@@ -104,7 +104,7 @@ export const CLINICAL_GENETICIST: Job = {
   department: LABORATORY,
   displayOrder: 6,
   description:
-    'I\'m a physician who diagnoses and prescribes treatment for dinosaurs with conditions that result from genetic anomalies. I also gather data and evaluates the medical histories of dinosaurs and their relatives. I also collect and analyse DNA samples. '
+    "I'm a physician who diagnoses and prescribes treatment for dinosaurs with conditions that result from genetic anomalies. I also gather data and evaluates the medical histories of dinosaurs and their relatives. I also collect and analyse DNA samples. "
 }
 export const BIOCHEMIST: Job = {
   title: 'BioChemist',
@@ -187,7 +187,7 @@ export const RAPTOR_WRANGLER: Job = {
   department: PARK_RANGER,
   displayOrder: 4,
   description:
-    "My job is to create training regimes for the raptors as well as providing general care for them, such as cleaning habitats or sleeping areas, and familiarising them with human voices and contact. I don't think this will end well for us... it never does"
+    "My job is to create training regimes for the raptors as well as providing general care for them, such as cleaning habitats or sleeping areas, and familiarising them with human voices and contact. I don't think this will end well for us... it never does."
 }
 export const HERB_HELPER: Job = {
   title: 'Herbivore Helper',
@@ -253,21 +253,21 @@ export const SYSTEMS_SECURITY_ADMIN: Job = {
   title: 'Systems Security Admin',
   department: TECHNOLOGY,
   description:
-    'I administer the system security, making sure all camera are working and are hooked up to the network for monitoring',
+    'I administer the system security, making sure all the cameras are working and are hooked up to the network for monitoring.',
   displayOrder: 5
 }
 export const HEAD_OF_NETWORK_SUPPORT: Job = {
   title: 'Head of Network Support',
   department: TECHNOLOGY,
   description:
-    'My most used phrase is "Have you tried turning it off an on again?" so can you at least try that first before calling me',
+    'My most used phrase is "Have you tried turning it off an on again?" so can you at least try that first before calling me.',
   displayOrder: 2
 }
 export const SOFTWARE_ENGINEER: Job = {
   title: 'Software Engineer',
   department: TECHNOLOGY,
   description:
-    'I write the code for the park systems that monitors the vitals of the dinosaurs and the status of their enclosures.',
+    'I write the code for the park systems that monitor the vitals of the dinosaurs and the status of their enclosures.',
   displayOrder: 4
 }
 export const SYSTEMS_DATABASE_ENGINEER: Job = {
