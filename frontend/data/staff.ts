@@ -339,7 +339,7 @@ const staff: StaffMember[] = [
   {
     uuid: '63d70f9d-772f-4764-8178-09e587d1209e',
     firstname: 'Finley',
-    surname: 'Priest',
+    surname: 'Oryan',
     job: HERB_HELPER
   },
   {
@@ -529,7 +529,7 @@ const staff: StaffMember[] = [
   {
     uuid: 'a0553211-5e5f-4731-80bc-00488977b688',
     firstname: 'Mike',
-    surname: 'Rodgers',
+    surname: 'Rogers',
     job: SYSTEMS_SECURITY_ADMIN
   }
 ]
